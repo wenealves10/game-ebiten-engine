@@ -7,6 +7,7 @@ import (
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/wenealves10/game-ebiten-engine/camera"
 	"github.com/wenealves10/game-ebiten-engine/constants"
+	"github.com/wenealves10/game-ebiten-engine/entities"
 	"github.com/wenealves10/game-ebiten-engine/tilemap"
 	"github.com/wenealves10/game-ebiten-engine/tileset"
 )
@@ -17,6 +18,7 @@ const (
 )
 
 type Game struct {
+	player      *entities.Player
 	tilemapJSON *tilemap.TilemapJSON
 	tilesets    []tileset.Tileset
 	cam         *camera.Camera
