@@ -15,11 +15,13 @@ const (
 )
 
 type Player struct {
+	*Sprite
 	Health     uint
 	Animations map[PlayerState]*animations.Animation
+	Flip       bool
 }
 
-func (p *Player) ActiveAnimation(dx, dy float64) *animations.Animation {
+func (p *Player) ActiveAnimation(dx, dy int) *animations.Animation {
 	if dx == 0 && dy == 0 {
 		return p.Animations[Idle]
 	}

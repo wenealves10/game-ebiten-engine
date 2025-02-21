@@ -11,7 +11,7 @@ type Animation struct {
 
 func (a *Animation) Update() {
 	a.frameCounter -= 1.0
-	if a.frameCounter <= 0.0 {
+	if a.frameCounter < 0.0 {
 		a.frameCounter = a.SpeedInTps
 		a.frame += a.Step
 		if a.frame > a.Last {
@@ -24,13 +24,13 @@ func (a *Animation) CurrentFrame() int {
 	return a.frame
 }
 
-func NewAnimation(first, last, step int, speedInTps float32) *Animation {
+func NewAnimation(first, last, step int, speed float32) *Animation {
 	return &Animation{
 		First:        first,
 		Last:         last,
 		Step:         step,
-		SpeedInTps:   speedInTps,
-		frameCounter: speedInTps,
+		SpeedInTps:   speed,
+		frameCounter: speed,
 		frame:        first,
 	}
 }
