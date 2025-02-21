@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "maps.json",
     "expandedProjectPaths": [
     ],
     "fileStates": {
@@ -14,7 +14,27 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "maps.json": {
+            "scale": 1,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 180,
+                "y": 114.5
+            }
+        },
+        "tilesets/Blue.json": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "tilesets/Idle.json": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tilesets/Pink.json": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tilesets/terrain.json": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         }
@@ -26,10 +46,19 @@
     "map.tileWidth": 16,
     "map.width": 100,
     "openFiles": [
+        "maps.json",
+        "tilesets/Pink.json",
+        "tilesets/terrain.json",
+        "tilesets/Blue.json",
+        "tilesets/Idle.json"
     ],
     "project": "maps.tiled-project",
     "recentFiles": [
         "tilesets/Idle.json",
+        "tilesets/Blue.json",
+        "tilesets/terrain.json",
+        "tilesets/Pink.json",
+        "maps.json",
         "espinhos.json"
     ],
     "tileset.lastUsedFormat": "json",
