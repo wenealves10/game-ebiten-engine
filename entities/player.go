@@ -1,6 +1,8 @@
 package entities
 
-import "github.com/wenealves10/game-ebiten-engine/animations"
+import (
+	"github.com/wenealves10/game-ebiten-engine/animations"
+)
 
 type PlayerState uint8
 
@@ -19,20 +21,17 @@ type Player struct {
 	Health     uint
 	Animations map[PlayerState]*animations.Animation
 	Flip       bool
+	State      string // "idle", "running", "jumping"
 }
 
 func (p *Player) ActiveAnimation(dx, dy int) *animations.Animation {
-	if dx == 0 && dy == 0 {
-		return p.Animations[Idle]
-	}
-
-	if dx > 0 {
-		return p.Animations[Running]
-	}
-
-	if dy > 0 {
+	if p.State == "jumping" {
 		return p.Animations[Jumping]
 	}
 
-	return nil
+	if p.State == "running" {
+		return p.Animations[Running]
+	}
+
+	return p.Animations[Idle]
 }

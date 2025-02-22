@@ -1,5 +1,10 @@
 package animations
 
+import (
+	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/wenealves10/game-ebiten-engine/spritesheet"
+)
+
 type Animation struct {
 	First        int
 	Last         int
@@ -7,6 +12,8 @@ type Animation struct {
 	SpeedInTps   float32
 	frameCounter float32
 	frame        int
+	Spritesheet  *spritesheet.SpriteSheet
+	Img          *ebiten.Image
 }
 
 func (a *Animation) Update() {
@@ -24,7 +31,7 @@ func (a *Animation) CurrentFrame() int {
 	return a.frame
 }
 
-func NewAnimation(first, last, step int, speed float32) *Animation {
+func NewAnimation(first, last, step int, speed float32, spriteSheet *spritesheet.SpriteSheet, img *ebiten.Image) *Animation {
 	return &Animation{
 		First:        first,
 		Last:         last,
@@ -32,5 +39,7 @@ func NewAnimation(first, last, step int, speed float32) *Animation {
 		SpeedInTps:   speed,
 		frameCounter: speed,
 		frame:        first,
+		Spritesheet:  spriteSheet,
+		Img:          img,
 	}
 }

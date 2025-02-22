@@ -2,22 +2,50 @@ package tilemap
 
 import (
 	"encoding/json"
+	"image"
 	"os"
 	"path"
 
 	"github.com/wenealves10/game-ebiten-engine/tileset"
 )
 
+type Object struct {
+	ID       int     `json:"id"`
+	Name     string  `json:"name"`
+	Type     string  `json:"type"`
+	Visible  bool    `json:"visible"`
+	Rotation float64 `json:"rotation"`
+	Height   float64 `json:"height"`
+	Width    float64 `json:"width"`
+	X        float64 `json:"x"`
+	Y        float64 `json:"y"`
+}
 type TilemapLayerJSON struct {
-	Data   []int  `json:"data"`
-	Width  int    `json:"width"`
-	Height int    `json:"height"`
-	Name   string `json:"name"`
+	Data    []int    `json:"data"`
+	Width   int      `json:"width"`
+	Height  int      `json:"height"`
+	Name    string   `json:"name"`
+	Objects []Object `json:"objects"`
 }
 
 type TilemapJSON struct {
 	Layers   []*TilemapLayerJSON `json:"layers"`
 	Tilesets []map[string]any    `json:"tilesets"`
+}
+
+func (t *TilemapJSON) GetColliders() []image.Rectangle {
+	var colliders []image.Rectangle
+	for _, layer := range t.Layers {
+		for _, object := range layer.Objects {
+			colliders = append(colliders, image.Rect(
+				int(object.X),
+				int(object.Y),
+				int(object.X)+int(object.Width),
+				int(object.Y)+int(object.Height),
+			))
+		}
+	}
+	return colliders
 }
 
 func (t *TilemapJSON) GetTilesetPath() ([]tileset.Tileset, error) {
